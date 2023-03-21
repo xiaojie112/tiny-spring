@@ -33,4 +33,21 @@ public class ApiTest {
         System.out.println(userService == userService_singleton);
     }
 
+    /**
+     * 测试解决无法初始化有参构造函数对象
+     */
+    @Test
+    public void test1(){
+        // 1.初始化 BeanFactory
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+
+        // 3. 注入bean
+        BeanDefinition beanDefinition = new BeanDefinition(UserService.class);
+        beanFactory.registerBeanDefinition("userService", beanDefinition);
+
+        // 4.获取bean
+        UserService userService = (UserService) beanFactory.getBean("userService", "小傅哥");
+        userService.queryUserInfo();
+    }
+
 }
