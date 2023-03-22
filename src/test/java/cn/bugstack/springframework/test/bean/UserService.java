@@ -7,10 +7,27 @@ package cn.bugstack.springframework.test.bean;
  */
 public class UserService {
 
-    public void queryUserInfo(){
-        System.out.println("查询用户信息");
+    private String uId;
+
+    private UserDao userDao;
+
+    public void queryUserInfo() {
+        System.out.println("查询用户信息：" + userDao.queryUserName(uId));
     }
 
-    public UserService(String name) {
+    public String getuId() {
+        return uId;
+    }
+
+    public void setuId(String uId) {
+        this.uId = uId;
+    }
+
+    public UserDao getUserDao() {
+        return userDao;
+    }
+
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
     }
 }
